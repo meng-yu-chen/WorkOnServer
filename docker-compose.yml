@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  
+  notebook:
+    build: .
+    image: imagejyputerjett73
+    container_name: c_jyputer_jett
+    ports: 
+       - "7773:7773"
+    volumes: 
+       - /home/jett/WorkOnServerLab:/home
+         #restart: unless-stopped
+
+  board:
+    build: ./TensorBoardFile
+    image: imagetensorboardjett72
+    container_name: c_tensorboard_jett
+    ports: 
+       - "7772:7772"
+    depends_on: 
+       - "notebook"
+    volumes: 
+       - /home/jett/WorkOnServerLab:/home
+         #restart: unless-stopped
+
